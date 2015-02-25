@@ -1,0 +1,18 @@
+@* showData Template File *@
+@(table: List[Knol],page:Int,search:String,total:Int)(implicit flash: play.api.mvc.Flash)
+@main("Records",page, total){
+	@flash.get("success").map { message =>
+			<div class="alert alert-dismissable alert-success">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<strong>Well done!</strong> @message
+			</div>
+		}
+	@flash.get("failure").map { message =>
+			<div class="alert alert-dismissable alert-danger">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<strong>Oh! </strong> @message
+			</div>
+		}
+	@dataTable(table,page,search,total)
+	
+}

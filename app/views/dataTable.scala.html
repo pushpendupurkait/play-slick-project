@@ -1,0 +1,29 @@
+@* dataTable Template File *@
+@(param:List[Knol],page:Int,search:String,total:Int)
+@addButton()
+<h2>Rows Found: @total</h2>
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-hover" style="margin-top: 10px;">
+			<tr>
+				<th>ID</th><th>First Name</th><th>Last Name</th><th>E-mail</th><th>Mobile</th><th>DEL</th><th>EDIT</th>
+			</tr>
+			@for(data <- param){
+				<tr>
+    				<td><a href="@routes.Application.updateByID(data.id)">@data.id</a></td>
+    				<td>@data.Fname</td>
+    				<td>@data.Lname</td>
+    				<td>@data.Email</td>
+    				<td>@data.Mobile</td>
+    				<td><a href="@routes.Application.deleteById(data.id)"><spam class="glyphicon glyphicon-remove"></spam></a></td>
+    				<td><a href="@routes.Application.updateByID(data.id)"><spam class="glyphicon glyphicon-pencil"></td>
+    			</tr>
+			}
+		</table>
+		
+			<div><a href="/show?page=@(page-1)&search=@search" class="btn btn-info col-md-2"  id="prev"><span class="glyphicon glyphicon-chevron-left"></span>Previous</a>
+				<div class="col-md-8" align="center"><h3>@(page+1)/@(((total-1)/5)+1)</h3></div>
+				<a href="/show?page=@(page+1)&search=@search" class="btn btn-info col-md-2" id="next">Next<span class="glyphicon glyphicon-chevron-right"></span></a>
+			</div>
+	</div>
+</div>

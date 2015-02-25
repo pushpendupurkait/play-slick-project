@@ -1,0 +1,31 @@
+@* editKnolder Template File *@
+@(computerForm: Form[Knol],ID:Int)
+@import helper._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
+@main("Edit Form",0,0){
+	<div>
+    		@form(routes.Application.updateByID(ID),'class -> "form form-horizontal", 'id->"form1",'method ->"post") {
+	<div class="form-group">
+            @inputText(computerForm("id"), '_label -> "ID",'class -> "form-control")
+    </div>
+    <div class="form-group">
+            @inputText(computerForm("Fname"), '_label -> "First Name",'class -> "form-control")
+    </div>
+    <div class="form-group">
+            @inputText(computerForm("Lname"), '_label -> "Last Name",'class -> "form-control")
+    </div>
+    <div class="form-group">
+            @inputText(computerForm("Email"), '_label -> "E-Mail",'class -> "form-control")
+    </div>
+    <div class="form-group">
+            @inputText(computerForm("Mobile"), '_label -> "Mobile",'class -> "form-control")
+    </div><div class="container row">
+        <div class="actions col-md-6">
+            <input type="submit" value="Update Employee" class="btn btn-info">
+        </div>
+        <div class="col-md-6"></div>
+        </div>
+    	}
+    </div>
+}
+

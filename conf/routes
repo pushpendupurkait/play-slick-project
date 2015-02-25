@@ -1,0 +1,18 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index
+GET		/addform					controllers.Application.formToAdd						
+POST	/showData					controllers.Application.addEmployee
+GET		/show						controllers.Application.showData(page:Int?= 0,pageSize:Int?= 5,search:String?="",total:Int?=50)
+#POST   /computers                  controllers.Application.addEmployee
+GET		/delete						controllers.Application.deleteById(ID: Int)
+GET		/update						controllers.Application.update(id:Int)
+POST	/update						controllers.Application.updateByID(id: Int)
+GET		/contact					controllers.Application.contact
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET    /webjars/*file          		controllers.WebJarAssets.at(file)
+
